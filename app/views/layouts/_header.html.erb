@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container">
+        <a class="navbar-brand" href="#">Nurse bnb</a>
+        <%# serch button %>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Where are you going?" aria-label="Search">
+        </form>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <button type="button" class="btn btn-outline-success">Become a host</button>
+                <% if user_signed_in? %>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><%= current_user.email %></a>
+                        <div class="dropdown-menu">
+                            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                            <%= link_to "Settings", edit_user_registration_path(current_user), class: "dropdown-item" %>
+                        </div>
+                    </li>
+                <% else %>
+                    <li class="nav-item">
+                        <%= link_to "Sign-up",new_user_session_path, class:"nav-link"%>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <%= link_to "Log In", user_session_path, class: "nav-link" %>
+                    </li>  
+                <% end %>           
+            </ul>
+        </div>
+    </div>
+</nav>
