@@ -17,6 +17,10 @@
         </div>
             <%= f.submit "Sign up", class: 'btn btn-block btn-light'%>
             <hr />
-            <%= f.submit "Sign in with Facebook", class: 'btn btn-block btn-light text-info'%>
+            <div>
+                <%= link_to user_facebook_omniauth_authorize_path, class: 'btn btn-block btn-primary' do %>
+                    <i class="fa fa-facebook-official"></i> Sign in with Facebook
+                <% end %>
+            </div>
     <% end %>
 </div>
