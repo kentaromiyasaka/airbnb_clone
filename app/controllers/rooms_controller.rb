@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.new(rooms_params)
     if @room.save
-      redirect_to listing_room_path(current_user)
+      redirect_to listing_room_path(@room)
     else
       flash[:alert] = "There is error"
       render "new"
@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
   end
 
   def listing
-    
+    @room = Room.find(params[:id])
   end
 
   def rooms_params
