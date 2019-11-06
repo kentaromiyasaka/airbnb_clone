@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :rooms
+  resources :rooms do
+    member do
+      get 'listing'
+    end
+  end
+
   resources :users, only: [:show]
   root 'pages#home'
   devise_for :users,
