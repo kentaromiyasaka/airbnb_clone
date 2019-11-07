@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-3"> 
+        <%= render "sidebar" %> 
+    </div>
+
+    <div class="col-9">
+        <div class="card">
+            <div class="card-header text-info">
+                <p class="m-0">Photos</p>
+            </div>
+
+            <div class="card-body">
+                <%= form_for(@room) do |f| %>
+                    <div class="form-group">
+                        <span class="btn btn-default btn-file">
+                            Select photos
+                            <%= file_field_tag :picture, type: :file %>
+                        </span> 
+                    </div>
+                              
+                    <%= f.submit "Add photos", class: 'btn btn-block btn-success w-30'%>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

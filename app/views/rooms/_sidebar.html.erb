@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-header">
-        <p><%= link_to "Listing","#", class:"text-info py-3"%></p>
-        <p><%= link_to "Pricing","#", class:"text-info py-3"%></p>
-        <p><%= link_to "Description","#", class:"text-info py-3"%></p>
-        <p><%= link_to "Photos","#", class:"text-info py-3"%></p>
-        <p><%= link_to "Amenities","#", class:"text-info py-3"%></p>
-        <p><%= link_to "Location","#", class:"text-info py-3"%></p>
+        <p><%= link_to "Listing", listing_room_path(@room), class:"text-info py-3"%></p>
+        <p><%= link_to "Pricing", pricing_room_path(@room), class:"text-info py-3"%></p>
+        <p><%= link_to "Description", description_room_path(@room), class:"text-info py-3"%></p>
+        <p><%= link_to "Photos", photos_room_path(@room), class:"text-info py-3"%></p>
+        <p><%= link_to "Amenities", amenities_room_path(@room), class:"text-info py-3"%></p>
+        <p><%= link_to "Location", location_room_path(@room), class:"text-info py-3"%></p>
     </div>
     <div class="card-body">
         <button type="button" class="btn btn-success">Publish</button>

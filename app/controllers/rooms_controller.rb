@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :room_find, only: [:listing, :pricing, :description, :photos, :amenities, :location]
+
   def new
     @room = current_user.rooms.new
   end
@@ -14,6 +16,26 @@ class RoomsController < ApplicationController
   end
 
   def listing
+  end
+
+  def pricing
+  end
+
+  def description
+  end
+
+  def photos
+  end
+
+  def amenities
+  end
+
+  def location
+  end
+
+  private
+
+  def room_find
     @room = Room.find(params[:id])
   end
 
