@@ -18,11 +18,11 @@ class RoomsController < ApplicationController
   def update
     @room =Room.find(params[:id])
     if @room.update(rooms_params)
-      redirect_to listing_room_path(@room)
       flash[:notice] = "Your room is updated"
+      redirect_back(fallback_location: request.referer)
     else
       flash[:alert] = "There is error"
-      render”new”
+      render "new"
     end
   end
 
