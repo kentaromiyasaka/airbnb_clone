@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :rooms do
     member do
-      get 'listing'
+      get 'listing','pricing','description','photos','amenities','location'
     end
   end
 

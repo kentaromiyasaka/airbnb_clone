@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-3">
+        <%= render "sidebar" %> 
+    </div>
+    <div class="col-9">
+        <div class="card">
+            <div class="card-header text-info">
+                <p class="m-0">Pricing</p>
+            </div>
+
+            <div class="card-body">
+            <%= form_for(@room) do |f| %>
+                <div class="form-group">
+                    <%= f.label :Price %><br>
+                    <%= f.text_field :price, placeholder: "e.g,$100", class:"form-control" %>
+                </div>
+                    <%= f.submit "Save", class: 'btn btn-block btn-success w-25'%>
+                </div>
+            <% end %>
+        </div>
+    </div>
