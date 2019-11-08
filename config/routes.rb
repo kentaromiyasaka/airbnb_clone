@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'listing','pricing','description','photos','amenities','location'
     end
+    resources :photos, only: [:create, :destroy]
   end
 
   resources :users, only: [:show]
