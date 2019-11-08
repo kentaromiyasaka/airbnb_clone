@@ -10,16 +10,17 @@
             </div>
 
             <div class="card-body">
-                <%= form_for(@room) do |f| %>
+                <%= form_for @room, url: room_photos_path(@room), method: :post, html: {multipart: true} do |f| %>
                     <div class="form-group">
                         <span class="btn btn-default btn-file">
                             Select photos
-                            <%= file_field_tag :picture, type: :file %>
+                            <%= file_field_tag "images[]", type: :file, multiple: true %>
                         </span> 
                     </div>
                               
                     <%= f.submit "Add photos", class: 'btn btn-block btn-success w-30'%>
                 <% end %>
+                <%= render "photos/photo_list" %>
             </div>
         </div>
     </div>
