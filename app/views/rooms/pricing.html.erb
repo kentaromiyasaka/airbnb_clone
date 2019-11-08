@@ -12,7 +12,7 @@
             <%= form_for(@room) do |f| %>
                 <div class="form-group">
                     <%= f.label :Price %><br>
-                    <%= f.text_field :price, placeholder: "e.g,$100", class:"form-control" %>
+                    <%= f.text_field :price, placeholder: "e.g,$100", class:"form-control", required: true %>
                 </div>
                     <%= f.submit "Save", class: 'btn btn-block btn-success w-25'%>
                 </div>
