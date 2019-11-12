@@ -2,6 +2,9 @@
     <div class="row p-4">
         <% @photos.each do |photo| %>
             <div class="card m-2">
+                <%= link_to room_photo_path(photo.room_id, photo), method: :delete, data: {confirm: 'Are you sure?'}, remote: true do %>
+                    <i class="fa fa-trash float-right pr-2 text-secondary"></i> 
+                <% end %>
                 <div class="card-body p-2">
                     <%= image_tag photo.image.url, size: '150x100'%>
                 </div>
