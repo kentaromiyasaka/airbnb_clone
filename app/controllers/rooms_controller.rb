@@ -29,6 +29,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def index
+    @rooms = current_user.rooms.all
+  end
+
   def listing
   end
 
@@ -47,6 +51,8 @@ class RoomsController < ApplicationController
 
   def location
   end
+
+
 
   private
 
