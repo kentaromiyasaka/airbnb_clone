@@ -4,7 +4,7 @@ $("#photos").html("<%= j render 'photo_list' %>");
 <% end %>
 
 <% if ready?(@room) %>
-    $("#btn-publish").attr('disabled', false);
+  $("#btn-publish").attr('disabled', false);
   <% else %>
-    $("#btn-publish").attr('disabled', true);
+  $("#btn-publish").attr('disabled', true);
 <% end %>
