@@ -1,0 +1,27 @@
+<div class="row">
+    <%= render "index_sidebar" %> 
+    <div class="col-9">
+        <div class="card">
+            <div class="card-header text-info">
+                <div>Your Listings</div>
+            </div>
+            <div class="card-body">
+                <% @rooms.each do |room| %>
+                    <div class="row p-1">
+                        <div class="col-3">
+                            <% if room.photos.first %>
+                                <%= image_tag room.photos.first.image.url, size: '150x100' %>
+                            <% else %>
+                                <%= image_tag 'no_image.png', size: '150x100' %>
+                            <% end %>
+                        </div>
+                        <h5 class="col-6 pt-4"><%= room.name%></h5>
+                        <div class="col-3 pt-4">
+                            <%= link_to "Update",listing_room_path(room), class: "btn btn-success btn-block",id:"update-button" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

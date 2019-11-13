@@ -14,7 +14,9 @@
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><%= image_tag avatar_url(current_user), class: "avatar-sm rounded-circle" %>
                         <%= current_user.fullname %></a>
                         <div class="dropdown-menu">
+                            <%= link_to "Manage Listing", rooms_path, class: "dropdown-item" %>
                             <%= link_to "List Your Space",new_room_path, class: "dropdown-item" %>
+                            <hr>
                             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                             <%= link_to "Settings", edit_user_registration_path(current_user), class: "dropdown-item" %>
                         </div>
