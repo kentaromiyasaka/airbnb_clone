@@ -16,8 +16,11 @@ class RoomsController < ApplicationController
   end
 
   def update
-    @room =Room.find(params[:id])
-    if @room.update(rooms_params)
+    @room = Room.find(params[:id])
+
+    final_params = (ready?(@room) ? rooms_params.merge(is_active: true) : rooms_params)
+
+    if @room.update(final_params)
       flash[:notice] = "Your room is updated"
       redirect_back(fallback_location: request.referer)
     else
@@ -52,6 +55,6 @@ class RoomsController < ApplicationController
   end
 
   def rooms_params
-    params.require(:room).permit(:name,:price ,:address ,:home_type ,:room_type ,:guest_count ,:bedroom_count ,:bathroom_count ,:summary ,:has_tv ,:has_aircon ,:has_heating,:has_internet, :has_kitchen, :is_active)
+    params.require(:room).permit(:name, :price, :address, :home_type, :room_type, :guest_count, :bedroom_count, :bathroom_count, :summary, :has_tv, :has_aircon, :has_heating, :has_internet, :has_kitchen, :is_active)
   end
 end
