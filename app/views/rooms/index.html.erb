@@ -15,7 +15,9 @@
                                 <%= image_tag 'no_image.png', size: '150x100' %>
                             <% end %>
                         </div>
-                        <h5 class="col-6 pt-4"><%= room.name%></h5>
+                        <h5 class="col-6 pt-4">
+                            <%= link_to room.name,room,class:"text-info"%>
+                        </h5>
                         <div class="col-3 pt-4">
                             <%= link_to "Update",listing_room_path(room), class: "btn btn-success btn-block",id:"update-button" %>
                         </div>

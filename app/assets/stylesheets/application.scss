@@ -17,6 +17,10 @@
 .avatar-sm{
   width: 25px
 }
+.avatar-md{
+  width: 50px;
+  margin:10px 0px 5px 30px;
+}
 
 .btn-default {
   width: 100%;
@@ -44,4 +48,7 @@
   width: 100px;
   height: 40px;
 
+}
+.line-through{
+  text-decoration: line-through;
 }
