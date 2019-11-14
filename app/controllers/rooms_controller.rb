@@ -30,7 +30,12 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = current_user.rooms.all
+    @rooms = current_user.rooms
+  end
+
+  def show
+    @room = Room.find(params[:id])
+    @photos = @room.photos
   end
 
   def listing
