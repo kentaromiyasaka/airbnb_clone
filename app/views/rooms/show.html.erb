@@ -1,5 +1,5 @@
 <%= image_tag @room.photos.first.image.url, :size => '1110x700' %>
-<div class="row">
+<div class="row p-2">
     <div class="col-9">
         <div class="d-inline-block">
             <h1><%= @room.name %></h1>
@@ -105,23 +105,25 @@
                     $<%= @room.price %> Per Night
                 </div>
             </div>
+
             <div class="card-body row">
                 <div class="col-6">
                     <div>Check in</div>
-                    <textarea name="" id="" cols="5" rows="1"></textarea>
+                    <input type="text" name="name" size="10" maxlength="20" class="my-1">
                 </div>
                 <div class="col-6">
-                    <div>Check in</div>
-                    <textarea name="" id="" cols="5" rows="1"></textarea>
+                    <div>Check out</div>
+                    <input type="text" name="name" size="10" maxlength="20" class="my-1">
                 </div>
                 <div class="col-6">Price</div>
                 <div class="col-6"><%= @room.price %></div>
-                <hr>
+                <hr class="col-10 m-1">
                 <div class="col-6">Night(s)</div>
                 <div class="col-6">×1</div>
-                <hr>
+                <hr class="col-10 m-1">
                 <div class="col-6">Total</div>
                 <div class="col-6">$total</div>
+                <hr class="col-10 m-1">
             </div>
         </div>
     </div>

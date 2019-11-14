@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :room_find, only: [:listing, :pricing, :description, :photos, :amenities, :location]
+  before_action :room_find, only: [:listing, :pricing, :description, :photos, :amenities, :location ,:show]
 
   def new
     @room = current_user.rooms.new
@@ -34,7 +34,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
     @photos = @room.photos
   end
 
