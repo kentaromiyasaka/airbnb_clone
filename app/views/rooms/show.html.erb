@@ -116,19 +116,23 @@
             <hr>
             <%# nearbys %>
             <p>Nearbys</p>
-            <div class="row">
-                <% for room in @room.nearbys(10) %>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="row">
-                                <%= image_tag room.photos.first.image.url, :class => "img-responsive col-12" %>
-                            </div>
-                            <div class="card-body">
-                                <%= link_to room.name, room %><br>
-                                (<%= room.distance.round(2) %> kms away)
+            <div class="row col-12">
+                <% if @room.nearbys %>
+                    <% for room in @room.nearbys(10) %>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="row">
+                                    <%= image_tag room.photos.first.image.url, :class => "img-responsive col-12" %>
+                                </div>
+                                <div class="card-body">
+                                    <%= link_to room.name, room %><br>
+                                    (<%= room.distance.round(2) %> kms away)
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <% end %>
+                <% else %>
+                <p class="display-4">No nearby rooms</p>
                 <% end %>
             </div>
 
