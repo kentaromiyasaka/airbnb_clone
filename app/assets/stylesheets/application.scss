@@ -52,3 +52,19 @@
 .line-through{
   text-decoration: line-through;
 }
+
+.map-margin{
+  margin-left: 2px;
+  margin-right: 1px; 
+}
+#map {
+  position: relative;
+  width:813px;
+  height: 544px;
+}
+
+
+.map-image{
+  height: 100px;
+  width: 150px;
+}
