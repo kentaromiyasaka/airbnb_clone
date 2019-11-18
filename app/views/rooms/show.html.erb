@@ -1,129 +1,156 @@
-<%= image_tag @room.photos.first.image.url, :size => '1110x700' %>
-<div class="row p-2">
-    <div class="col-9">
-        <div class="d-inline-block">
-            <h1><%= @room.name %></h1>
-            <h3><%= @room.address %></h3>
-        </div>
-        <div class="d-inline-block float-right">
-            <%= image_tag avatar_url(@room.user), class: "avatar-md rounded-circle" %><br>
-            <%= @room.user.fullname %>
-        </div>
-        <hr>
-        <div class="row text-center">
-            <div class="col-3">
-                <i class="fa fa-home fa-3x"></i>
-                <p><%= @room.home_type %></p>
-            </div>
-            <div class="col-3">
-                <i class="fa fa-user-circle fa-3x"></i><br>
-                <p><%= @room.guest_count %> Guests</p>
-            </div>
-            <div class="col-3">
-                <i class="fa fa-bath fa-3x"></i><br>
-                <p><%= @room.bathroom_count %> Bathroom</p>
-            </div>
-            <div class="col-3">
-                <i class="fa fa-bed fa-3x"></i><br>
-                <p><%= @room.bedroom_count %> Bedroom</p>
-            </div>
-        </div>
-        <hr>
-        <%# description %>
-        <div class="description">
-            <h3>About this listing</h3>
-            <%= @room.summary %>
-        </div>
-        <hr>
-        <%# amenity %>
-        <div class="row">
-            <h3 class="col-3">Amenities</h3><br>
-            <div class="col-9 row">
-                <div class="<%= 'line-through' unless @room.has_tv %> col-6 p-2">TV</div>
-                <div class="<%= 'line-through' unless @room.has_aircon %> col-6 p-2">Air Conditioning</div>
-                <div class="<%= 'line-through' unless @room.has_heating %> col-6 p-2">Heating</div>
-                <div class="<%= 'line-through' unless @room.has_internet %> col-6 p-2">Internet</div>
-                <div class="<%= 'line-through' unless @room.has_kitchen %> col-6 p-2">Kitchen</div>
-            </div>
-        </div>
-        <hr>
-        <%# カルーセル %>
-        <div id="carouselExampleIndicators" class="carousel slide pt-2" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <% @photos.each do |photo| %> 
-                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= photo.id %>"></li>
-                <% end %>
-            </ol>
-            <div class="carousel-inner">
-                <% @photos.each do |photo| %> 
-                    <div class="carousel-item <%= 'active' if photo.id == @photos[0].id %>">
-                        <%= image_tag photo.image.url, class: "d-block w-100" %>
-                    </div>
-                <% end %>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <hr>
-        <%# map %>
-        <p>map will come here</p>
-
-        <hr>
-
-        <p>2 reviews ***</p>
-        <div class="review_contents">
-        <%# each文 %>
-            <div class="d-inline-block"><%# レビューしたユーザーグラバタール class:"d-inline-block"%>
-            </div>
+<div class="row">
+    <%= image_tag @room.photos.first.image.url, :class => "img-responsive col-12"%>
+    <div class="col-12 row p-2">
+        <div class="col-9">
             <div class="d-inline-block">
-                <%# レビュー %>
-                <%# レビューした日付 %>
-                <%# レビュー内容 %>
+                <h1><%= @room.name %></h1>
+                <h3><%= @room.address %></h3>
             </div>
-        </div>
-        <hr>
-        <%# nearbys %>
-        <p>Nearbys</p>
-        <%# each文 %>
-        <div>
-            <%# 写真 %>
-            <%# room.name %>
-            <%# ここからの距離 %>
-        </div>
-
-    </div>
-    <div class="col-3 p-3">
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    $<%= @room.price %> Per Night
+            <div class="d-inline-block float-right">
+                <%= image_tag avatar_url(@room.user), class: "avatar-md rounded-circle" %><br>
+                <%= @room.user.fullname %>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div class="col-3">
+                    <i class="fa fa-home fa-3x"></i>
+                    <p><%= @room.home_type %></p>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-user-circle fa-3x"></i><br>
+                    <p><%= @room.guest_count %> Guests</p>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-bath fa-3x"></i><br>
+                    <p><%= @room.bathroom_count %> Bathroom</p>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-bed fa-3x"></i><br>
+                    <p><%= @room.bedroom_count %> Bedroom</p>
                 </div>
             </div>
+            <hr>
+            <%# description %>
+            <div class="description">
+                <h3>About this listing</h3>
+                <%= @room.summary %>
+            </div>
+            <hr>
+            <%# amenity %>
+            <div class="row">
+                <h3 class="col-3">Amenities</h3><br>
+                <div class="col-9 row">
+                    <div class="<%= 'line-through' unless @room.has_tv %> col-6 p-2">TV</div>
+                    <div class="<%= 'line-through' unless @room.has_aircon %> col-6 p-2">Air Conditioning</div>
+                    <div class="<%= 'line-through' unless @room.has_heating %> col-6 p-2">Heating</div>
+                    <div class="<%= 'line-through' unless @room.has_internet %> col-6 p-2">Internet</div>
+                    <div class="<%= 'line-through' unless @room.has_kitchen %> col-6 p-2">Kitchen</div>
+                </div>
+            </div>
+            <hr>
+            <%# カルーセル %>
+            <div id="carouselExampleIndicators" class="carousel slide pt-2" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <% @photos.each do |photo| %> 
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<%= photo.id %>"></li>
+                    <% end %>
+                </ol>
+                <div class="carousel-inner">
+                    <% @photos.each do |photo| %> 
+                        <div class="carousel-item <%= 'active' if photo.id == @photos[0].id %>">
+                            <%= image_tag photo.image.url, class: "d-block w-100" %>
+                        </div>
+                    <% end %>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <hr>
+            <%# map %>
+            <div class="row text-center map-margin">
+                <div id="map"></div>
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASDQzE8fKFa7Tl3kO44cgVTMGSb783Su0"></script>
+                <script>
+                    function initialize() {
+                        var location = {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: location,
+                            zoom: 14
+                        });
 
-            <div class="card-body row">
-                <div class="col-6">
-                    <div>Check in</div>
-                    <input type="text" name="name" size="10" maxlength="20" class="my-1">
+                        var marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                        
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: '<div id="content"><%= image_tag @room.photos.first.image.url , class: "map-image" %></div>'
+                        });
+
+                        infoWindow.open(map, marker);
+                    }
+
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                </script>
+                    <%# googlemapとhtmlを繋いでいる %>
+            </div>
+            <hr>
+
+            <p>2 reviews ***</p>
+            <div class="review_contents">
+            <%# each文 %>
+                <div class="d-inline-block"><%# レビューしたユーザーグラバタール class:"d-inline-block"%>
                 </div>
-                <div class="col-6">
-                    <div>Check out</div>
-                    <input type="text" name="name" size="10" maxlength="20" class="my-1">
+                <div class="d-inline-block">
+                    <%# レビュー %>
+                    <%# レビューした日付 %>
+                    <%# レビュー内容 %>
                 </div>
-                <div class="col-6">Price</div>
-                <div class="col-6"><%= @room.price %></div>
-                <hr class="col-10 m-1">
-                <div class="col-6">Night(s)</div>
-                <div class="col-6">×1</div>
-                <hr class="col-10 m-1">
-                <div class="col-6">Total</div>
-                <div class="col-6">$total</div>
-                <hr class="col-10 m-1">
+            </div>
+            <hr>
+            <%# nearbys %>
+            <p>Nearbys</p>
+            <%# each文 %>
+            <div>
+                <%# 写真 %>
+                <%# room.name %>
+                <%# ここからの距離 %>
+            </div>
+
+        </div>
+        <div class="col-3 p-0">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        $<%= @room.price %> Per Night
+                    </div>
+                </div>
+
+                <div class="card-body row">
+                    <div class="col-6">
+                        <div>Check in</div>
+                        <input type="text" name="name" size="10" maxlength="20" class="my-1">
+                    </div>
+                    <div class="col-6">
+                        <div>Check out</div>
+                        <input type="text" name="name" size="10" maxlength="20" class="my-1">
+                    </div>
+                    <div class="col-6">Price</div>
+                    <div class="col-6"><%= @room.price %></div>
+                    <hr class="col-10 m-1">
+                    <div class="col-6">Night(s)</div>
+                    <div class="col-6">×1</div>
+                    <hr class="col-10 m-1">
+                    <div class="col-6">Total</div>
+                    <div class="col-6">$total</div>
+                    <hr class="col-10 m-1">
+                </div>
             </div>
         </div>
     </div>
