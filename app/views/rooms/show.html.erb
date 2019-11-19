@@ -78,7 +78,7 @@
                 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASDQzE8fKFa7Tl3kO44cgVTMGSb783Su0"></script>
                 <script>
                     function initialize() {
-                        var location = {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>};
+                        var location = {lat: Number("<%= @room.latitude %>"), lng: Number("<%= @room.longitude %>")};
                         var map = new google.maps.Map(document.getElementById('map'), {
                             center: location,
                             zoom: 14
@@ -115,8 +115,29 @@
             </div>
             <hr>
             <%# nearbys %>
-            <p>Nearbys</p>
-            <%# each文 %>
+            <h3>Nearbys</h3>
+            <div class="row col-12 pb-3">
+                <% if @room.nearbys %>
+                    <% for room in @room.nearbys(10) %>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="row">
+                                    <%= image_tag room.photos.first.image.url, :class => "img-responsive col-12" %>
+                                </div>
+                                <div class="card-body">
+                                    <%= link_to room.name, room %><br>
+                                    (<%= room.distance.round(2) %> kms away)
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p class="display-4">No nearby rooms</p>
+                <% end %>
+            </div>
+            <hr class="py-4">
+
+
             <div>
                 <%# 写真 %>
                 <%# room.name %>
