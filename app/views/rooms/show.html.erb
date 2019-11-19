@@ -78,7 +78,7 @@
                 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASDQzE8fKFa7Tl3kO44cgVTMGSb783Su0"></script>
                 <script>
                     function initialize() {
-                        var location = {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>};
+                        var location = {lat: Number("<%= @room.latitude %>"), lng: Number("<%= @room.longitude %>")};
                         var map = new google.maps.Map(document.getElementById('map'), {
                             center: location,
                             zoom: 14
