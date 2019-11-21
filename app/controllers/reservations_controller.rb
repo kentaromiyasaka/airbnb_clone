@@ -19,7 +19,16 @@ class ReservationsController < ApplicationController
 
     redirect_to @room
   end
-  
+
+  def trips
+    @trips = current_user.reservations
+
+  end
+
+  def reservations
+    @rooms = current_user.rooms
+  end
+
   private
 
   def reservation_params

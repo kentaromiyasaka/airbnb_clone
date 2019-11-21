@@ -16,9 +16,12 @@
                         <div class="dropdown-menu">
                             <%= link_to "Manage Listing", rooms_path, class: "dropdown-item" %>
                             <%= link_to "List Your Space",new_room_path, class: "dropdown-item" %>
+                            <%= link_to "Your trips",trips_path, class: "dropdown-item" %>
+                            <%= link_to "Your reservations","#", class: "dropdown-item" %>
                             <hr>
                             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                             <%= link_to "Settings", edit_user_registration_path(current_user), class: "dropdown-item" %>
+                            
                         </div>
                     </li>
                 <% else %>
