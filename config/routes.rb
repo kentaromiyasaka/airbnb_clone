@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'reservation/create'
   resources :rooms do
     member do
       get 'listing','pricing','description','photos','amenities','location','preload','preview'
@@ -7,6 +6,8 @@ Rails.application.routes.draw do
     resources :photos, only: [:create, :destroy]
     resources :reservations, only: [:create]
   end
+  get 'trips', to: 'reservations#trips'
+  get 'reservations', to: 'reservations#reservations'
 
   resources :users, only: [:show]
   root 'pages#home'

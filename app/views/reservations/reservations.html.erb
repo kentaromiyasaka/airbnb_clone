@@ -1,0 +1,29 @@
+<div class="row">
+
+    <%= render "rooms/index_sidebar" %> 
+
+    <div class="col-9 card">
+        <div class="card-body p-3 row">
+            <% @rooms.each do |room| %>
+                <% room.reservations.each do |reservation| %>
+                    <div class="col-2">
+                        <%= reservation.check_in.strftime('%v') %>
+                    </div>
+                    <div class="col-3 row">
+                        <%= link_to reservation.room do %>
+                            <%= image_tag reservation.room.photos.first.image.url, class: "img-responsive col-12"%>
+                        <% end %>
+                    </div>
+                    <div class="col-4 row">
+                        <h3 class="col-12"><%= reservation.room.name%></h3>
+                        <%= image_tag avatar_url(reservation.user), class:"avatar-md rounded-circle ml-0" %>
+                        <p class="pt-3 m-2"><%= link_to reservation.user.fullname %></p>
+                    </div>
+                    <div class="col-3">
+                        <%= link_to "Review Host","#", class: 'btn btn-block btn-success text-center p-2 m-4' %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
