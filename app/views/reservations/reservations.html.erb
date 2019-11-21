@@ -17,7 +17,7 @@
                     <div class="col-4 row">
                         <h3 class="col-12"><%= reservation.room.name%></h3>
                         <%= image_tag avatar_url(reservation.user), class:"avatar-md rounded-circle ml-0" %>
-                        <p class="pt-3 m-2"><%= link_to reservation.room.user.fullname %></p>
+                        <p class="pt-3 m-2"><%= link_to reservation.user.fullname %></p>
                     </div>
                     <div class="col-3">
                         <%= link_to "Review Host","#", class: 'btn btn-block btn-success text-center p-2 m-4' %>
