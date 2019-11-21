@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  room: one
+  check_in: 2019-11-19 02:11:07
+  check_out: 2019-11-19 02:11:07
+  price: 1
+  total_price: 1
+
+two:
+  user: two
+  room: two
+  check_in: 2019-11-19 02:11:07
+  check_out: 2019-11-19 02:11:07
+  price: 1
+  total_price: 1

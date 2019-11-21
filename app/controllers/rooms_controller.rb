@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :room_find, only: [:listing, :pricing, :description, :photos, :amenities, :location ,:show]
+  before_action :room_find, only: [:listing, :pricing, :description, :photos, :amenities, :location ,:show, :preload, :preview]
 
   def new
     @room = current_user.rooms.new
@@ -29,6 +29,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  def preload
+    today = Date.today
+    reservations = @room.reservations.where("check_in >= ? OR check_out >= ?", today, today)
+
+    render json: reservations
+  end
+
   def index
     @rooms = current_user.rooms
   end
@@ -56,7 +63,15 @@ class RoomsController < ApplicationController
   def location
   end
 
+  def preview
+    start_date = Date.parse(params[:check_in])
+    end_date = Date.parse(params[:check_out])
 
+    output = {
+      conflict: has_conflict(start_date, end_date, @room)
+    }
+    render json: output
+  end
 
   private
 
@@ -67,4 +82,10 @@ class RoomsController < ApplicationController
   def rooms_params
     params.require(:room).permit(:name, :price, :address, :home_type, :room_type, :guest_count, :bedroom_count, :bathroom_count, :summary, :has_tv, :has_aircon, :has_heating, :has_internet, :has_kitchen, :is_active)
   end
+
+  def has_conflict(check_in, check_out, room)
+    check = room.reservations.where("? < check_in AND check_out < ?", check_in, check_out)
+    check.size > 0 ? true : false
+  end
+
 end
