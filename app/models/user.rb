@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :reservations
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
+  has_many :host_reviews, class_name: "HostReview", foreign_key: "host_id"
+
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
